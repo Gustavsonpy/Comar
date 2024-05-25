@@ -4,5 +4,9 @@
     "express": "^4.19.2",
     "mysql2": "^3.9.7"
   },
-  "type": "module"
+  "scripts": {
+    "start": "node ./JS/server.mjs"
+  },
+  "type": "module",
+  "main": "server.js"
 }

@@ -4,38 +4,61 @@ import { saveData, getData } from "./localStorage.js";
 import { novoProjeto, saveUser } from "./crud.js";
 import { connection } from "./db.js";
 
-connection.connect((err) =>{
-  if (err){
-      console.log("Erro ao se conectar com o servidor")
-      return;
-    }
-  console.log("Servidor conectado!")
-});
+document.getElementById('register').addEventListener('submit', function(event) {
+  event.preventDefault();
 
-document.addEventListener('DOMContentLoaded', () => {
+  const nome = document.getElementById('user').value;
+  const email = document.getElementById('emailRegister').value;
+  const senha = document.getElementById('password').value;
 
-  let btn_cadastro = document.getElementById('btn-register')
-
-  btn_cadastro.addEventListener('click', () => {
-    const emailUsuario = document.getElementById('emailRegister').value;
-    const usuario = document.getElementById('user').value;
-    const senhaUsuario = document.getElementById('password').value;
-    const confirmacaoSenhaUsuario = document.getElementById('confirmationPassword').value;
-
-    if (senhaUsuario !== confirmacaoSenhaUsuario) {
-      console.error('Error: Passwords do not match');
-      return;
-    }
-
-    saveUser(emailUsuario, usuario, senhaUsuario)
-      .then(results => {
-        console.log('User saved:', results);
-      })
-      .catch(error => {
-        console.error('Error saving user:', error);
-      });
+  fetch('http://localhost:3000/register', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ nome, email, senha })
   })
+  .then(response => response.text())
+  .then(data => {
+      alert(data);
+  })
+  .catch(error => {
+      console.error('Erro:', error);
+  });
 });
+
+// connection.connect((err) =>{
+//   if (err){
+//       console.log("Erro ao se conectar com o servidor")
+//       return;
+//     }
+//   console.log("Servidor conectado!")
+// });
+
+// document.addEventListener('DOMContentLoaded', () => {
+
+//   let btn_cadastro = document.getElementById('btn-register')
+
+//   btn_cadastro.addEventListener('click', () => {
+//     const emailUsuario = document.getElementById('emailRegister').value;
+//     const usuario = document.getElementById('user').value;
+//     const senhaUsuario = document.getElementById('password').value;
+//     const confirmacaoSenhaUsuario = document.getElementById('confirmationPassword').value;
+
+//     if (senhaUsuario !== confirmacaoSenhaUsuario) {
+//       console.error('Error: Passwords do not match');
+//       return;
+//     }
+
+//     saveUser(emailUsuario, usuario, senhaUsuario)
+//       .then(results => {
+//         console.log('User saved:', results);
+//       })
+//       .catch(error => {
+//         console.error('Error saving user:', error);
+//       });
+//   })
+// });
 
 // saveData(data)
 //puxa os dados do armazenamento
