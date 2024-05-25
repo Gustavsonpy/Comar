@@ -1,9 +1,9 @@
 //1- SCRIP.JS - LINKADO AO HTML
 import { printData } from "../JS/print.js";
 import { saveData, getData } from "../JS/localStorage.js";
-import { novoProjeto, saveUser } from "../JS/crud.js";
+import { novoProjeto } from "../JS/crud.js";
 
-saveData(data)
+//saveData(data)
 //puxa os dados do armazenamento
 let data = getData();
 //senao tiver dados, os arrays são definidos como vazios
