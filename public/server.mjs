@@ -40,11 +40,11 @@ app.post('/cadastro', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-    res.send('Bem-vindo ao sistema de cadastro!');
+    res.sendFile('index.html', { root: './'});
   });
 
   app.get('/cadastro', (req, res) => {
-    res.sendFile('login.html', { root: 'public'});
+    res.sendFile('login.html', { root: 'html'});
 });
 
 app.listen(port, () => {

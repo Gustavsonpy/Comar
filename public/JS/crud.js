@@ -261,17 +261,3 @@ export function atualizarDadosProjeto(projeto) {
 //       saveData(novoUsuario);
 //   }
 // }
-
-
-export const saveUser = (emailUsuario, usuario, senhaUsuario) => {
-  return new Promise((resolve, reject) => {
-    const query = `INSERT INTO users (email, username, password) VALUES (?, ?, ?)`;
-    connection.query(query, [emailUsuario, usuario, senhaUsuario], (error, results) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(results);
-      }
-    });
-  });
-};
