@@ -1,44 +1,52 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import mysql from 'mysql2';
 
 const app = express();
 const port = 3000;
 
-app.use('/JS', express.static('public', { 'extensions': ['js'], 'setHeaders': (res, path, stat) => { res.set('Content-Type', 'text/javascript'); } }));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(bodyParser.json());
 
+// Configuração do banco de dados
 const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "root",
-    database: "comar"
-})
+  host: 'localhost',
+  user: 'root',
+  password: 'root',
+  database: 'comar'
+});
 
-connection.connect(err => {
-    if(err){console.log("Erro ao se conectar com o banco")}
-    else{console.log("Sucesso ao se conectar com o banco!")}
+// Conexão com o banco de dados
+connection.connect((err) => {
+  if (err) {
+    console.error('Erro ao conectar ao banco de dados:', err);
+    return;
+  }
+  console.log('Conectado ao banco de dados MySQL');
+});
+
+app.post('/cadastro', (req, res) => {
+  const { email, user, password } = req.body;
+
+  // Inserir os dados no banco de dados
+  const queryString = 'INSERT INTO users (email, username, senhaUsuario) VALUES (?, ?, ?)';
+  connection.query(queryString, [email, user, password], (err, results, fields) => {
+    if (err) {
+      console.error('Erro ao cadastrar usuário:', err);
+      return res.status(500).send('Erro ao cadastrar usuário');
+    }
+    console.log('Usuário cadastrado com sucesso');
+    res.send('Usuário cadastrado com sucesso');
+  });
 });
 
 app.get('/', (req, res) => {
-    res.sendFile('login.html', { root: 'public' });
-});
+    res.send('Bem-vindo ao sistema de cadastro!');
+  });
 
-app.post('/register', (req, res) => {
-    const { nome, email, senha } = req.body;
-    const query = 'INSERT INTO users (username, email, senhaUsuario) VALUES (?, ?, ?)';
-
-    connection.query(query, [nome, email, senha], (err, results) => {
-        if (err) {
-            console.error('Erro ao inserir dados:', err);
-            res.status(500).send('Erro ao cadastrar usuário');
-        } else {
-            res.status(200).send('Usuário cadastrado com sucesso');
-        }
-    });
+  app.get('/cadastro', (req, res) => {
+    res.sendFile('login.html', { root: 'public'});
 });
 
 app.listen(port, () => {
-    console.log(`Servidor rodando em http://localhost:${port}`);
-})
+  console.log(`Servidor rodando em http://localhost:${port}`);
+});

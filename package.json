@@ -7,6 +7,5 @@
   "scripts": {
     "start": "node ../public/server.mjs"
   },
-  "type": "module",
-  "main": "server.js"
+  "type": "module"
 }

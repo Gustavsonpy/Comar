@@ -54,7 +54,7 @@
         </form>
 
 
-        <form id="register">
+        <form id="register" action="/cadastro" method="POST">
           <div class="collapse pt-1" id="navbarToggleExternalContent">
             <div class="p-4">
               <h3>CADASTRO <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
@@ -64,19 +64,19 @@
                 </svg></h3>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Email:</label>
-                <input type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp">
+                <input type="email" class="form-control" id="emailRegister" aria-describedby="emailHelp" name="email">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Usuário</label>
-                <input type="text" class="form-control" id="user" aria-describedby="emailHelp">
+                <input type="text" class="form-control" id="user" aria-describedby="emailHelp" name="user">
               </div>
               <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Senha:</label>
-                <input type="password" class="form-control" id="password" aria-describedby="emailHelp">
+                <input type="password" class="form-control" id="password" aria-describedby="emailHelp" name="password">
               </div>
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Confirmar Senha:</label>
-                <input type="password" class="form-control" id="confirmationPassword">
+                <input type="password" class="form-control" id="confirmationPassword" name="confirmationPassword">
               </div>
               <button type="submit" class="btn btn-primary" id="btn-register">CADASTRAR NOVO USUÁRIO</button>
             </div>
