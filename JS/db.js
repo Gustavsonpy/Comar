@@ -1,10 +1,10 @@
-import mysql from 'mysql2';
+// import mysql from 'mysql2';
 
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'comar'
-});
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: 'root',
+//     database: 'comar'
+// });
 
-export { connection };
+// export { connection };

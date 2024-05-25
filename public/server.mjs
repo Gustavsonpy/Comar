@@ -5,6 +5,8 @@ import mysql from 'mysql2';
 const app = express();
 const port = 3000;
 
+app.use('/JS', express.static('public', { 'extensions': ['js'], 'setHeaders': (res, path, stat) => { res.set('Content-Type', 'text/javascript'); } }));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 const connection = mysql.createConnection({
@@ -17,6 +19,10 @@ const connection = mysql.createConnection({
 connection.connect(err => {
     if(err){console.log("Erro ao se conectar com o banco")}
     else{console.log("Sucesso ao se conectar com o banco!")}
+});
+
+app.get('/', (req, res) => {
+    res.sendFile('login.html', { root: 'public' });
 });
 
 app.post('/register', (req, res) => {

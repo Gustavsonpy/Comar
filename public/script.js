@@ -1,8 +1,8 @@
 //1- SCRIP.JS - LINKADO AO HTML
-import { printData } from "./print.js";
-import { saveData, getData } from "./localStorage.js";
-import { novoProjeto, saveUser } from "./crud.js";
-import { connection } from "./db.js";
+import { printData } from "../JS/print.js";
+import { saveData, getData } from "../JS/localStorage.js";
+import { novoProjeto, saveUser } from "../JS/crud.js";
+import { connection } from "../JS/db.js";
 
 document.getElementById('register').addEventListener('submit', function(event) {
   event.preventDefault();
