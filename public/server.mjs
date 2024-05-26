@@ -11,8 +11,8 @@ app.use(express.static('public'));
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: '',
-  database: 'institutocomar'
+  password: 'root',
+  database: 'instituto_comar'
 });
 
 // Conexão com o banco de dados
@@ -28,7 +28,7 @@ app.post('/cadastro', (req, res) => {
   const { email, user, password } = req.body;
 
   // Inserir os dados no banco de dados
-  const queryString = 'INSERT INTO users (email, nome_user, senha) VALUES (?, ?, ?)';
+  const queryString = 'INSERT INTO usuario (email, nome_user, senha) VALUES (?, ?, ?)';
   connection.query(queryString, [email, user, password], (err, results, fields) => {
     if (err) {
       console.error('Erro ao cadastrar usuário:', err);
@@ -43,8 +43,8 @@ app.get('/', (req, res) => {
     res.sendFile('index.html', { root: 'public/html'});
   });
 
-  app.get('/cadastro', (req, res) => {
-    res.sendFile('login.html', { root: 'html'});
+app.get('/cadastro', (req, res) => {
+  res.sendFile('login.html', { root: 'public/html'});
 });
 
 app.listen(port, () => {
