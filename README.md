@@ -2,7 +2,7 @@
 
 # Integrantes
 
-Daniel Douglas dos Santos
+Daniel Douglas dos Santos\n
 Felipe Obertier Gesser
 Guilherme Mafra Paluski
 Gustavo Mafra Paluski
