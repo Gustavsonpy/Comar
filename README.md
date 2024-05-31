@@ -5,7 +5,7 @@
 Daniel Douglas dos Santos  
 Felipe Obertier Gesser  
 Guilherme Mafra Paluski  
-Gustavo Mafra Paluski 
+Gustavo Mafra Paluski  
 Lucas Antônio Daniel  
 Lucas Affonso Klemke
 
