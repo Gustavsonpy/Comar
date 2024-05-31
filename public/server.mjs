@@ -27,16 +27,20 @@ connection.connect((err) => {
 app.post('/cadastro', (req, res) => {
   const { email, user, password } = req.body;
 
-  // Inserir os dados no banco de dados
-  const queryString = 'INSERT INTO usuario (email, nome_user, senha) VALUES (?, ?, ?)';
-  connection.query(queryString, [email, user, password], (err, results, fields) => {
-    if (err) {
-      console.error('Erro ao cadastrar usuário:', err);
-      return res.status(500).send('Erro ao cadastrar usuário');
-    }
-    console.log('Usuário cadastrado com sucesso');
-    res.send('Usuário cadastrado com sucesso');
-  });
+  if (req.body.password !== req.body.confirmationPassword) {
+    return res.redirect('/cadastro');
+  }else{
+    // Inserir os dados no banco de dados
+    const queryString = 'INSERT INTO usuario (email, nome_user, senha) VALUES (?, ?, ?)';
+    connection.query(queryString, [email, user, password], (err, results, fields) => {
+      if (err) {
+        console.error('Erro ao cadastrar usuário:', err);
+        return res.status(500).send('Erro ao cadastrar usuário');
+      }
+      console.log('Usuário cadastrado com sucesso');
+      res.sendFile('index.html', { root: 'public/html'}); 
+    });
+  }
 });
 
 app.get('/', (req, res) => {
