@@ -1,4 +1,4 @@
-# modelo-README.md
+# ProjetoComar.md
 
 # Integrantes
 
@@ -34,7 +34,7 @@ node public/server.mjs
 
 Obs.: Caso de erro, lembre de estar na pasta Comar-main. Segue print de exemplo:
 
-![alt text](print1.png)
+![print1](https://github.com/Gustavsonpy/Comar/assets/138543589/d0020076-b90c-4a21-863b-f8a703889c45)
 
 - Depois, segure a tecla 'Ctrl' e aperte no link que aparecerá:
 
@@ -48,4 +48,4 @@ http://localhost:3000
 
   Solução: Em server.mjs, altere ou remova a senha no campo 'password'. Segue print de exemplo:
 
-![alt text](print2.png)
+![print2](https://github.com/Gustavsonpy/Comar/assets/138543589/946e9d56-c37b-4491-8fed-7621e3b7181f)
