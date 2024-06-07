@@ -30,10 +30,10 @@
               d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16Zm3.78-9.72a.751.751 0 0 0-.018-1.042.751.751 0 0 0-1.042-.018L6.75 9.19 5.28 7.72a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042l2 2a.75.75 0 0 0 1.06 0Z">
             </path>
           </svg></h3>
-        <form>
+        <form action="/cadastro" method="POST">
           <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">Usuário</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Senha</label>
@@ -44,7 +44,7 @@
             <label class="form-check-label" for="exampleCheck1">Manter-se conectado</label>
           </div>
           <div class="d-flex">
-            <button type="submit" class="btn btn-primary">ENTRAR</button>
+            <button type="submit" class="btn btn-primary" id="btn-login">ENTRAR</button>
             <div class="container-fluid d-flex align-items-center">
               <p class="navbar-toggler m-0 cursor-pointer" data-bs-toggle="collapse"
                 data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
